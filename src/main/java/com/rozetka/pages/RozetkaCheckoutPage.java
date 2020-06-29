@@ -1,6 +1,6 @@
 package com.rozetka.pages;
 
-import com.rozetka.BasePage;
+import com.rozetka.core.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

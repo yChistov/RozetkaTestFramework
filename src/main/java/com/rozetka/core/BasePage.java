@@ -1,5 +1,7 @@
-package com.rozetka;
+package com.rozetka.core;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +21,8 @@ public abstract class BasePage {
     public String PAGE_URL;
     public String PAGE_TITLE;
     protected JavascriptExecutor jsExecutor;
+
+    private static final Logger logger = LogManager.getLogger(BasePage.class);
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
