@@ -16,77 +16,77 @@ import static org.testng.Assert.assertEquals;
 
 public abstract class BasePage {
 
-    public WebDriver driver;
-    public WebDriverWait wait;
-    public String PAGE_URL;
-    public String PAGE_TITLE;
-    protected JavascriptExecutor jsExecutor;
+  public WebDriver driver;
+  public WebDriverWait wait;
+  public String PAGE_URL;
+  public String PAGE_TITLE;
+  protected JavascriptExecutor jsExecutor;
 
-    private static final Logger logger = LogManager.getLogger(BasePage.class);
+  private static final Logger logger = LogManager.getLogger(BasePage.class);
 
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
-        jsExecutor = ((JavascriptExecutor) driver);
-        wait = new WebDriverWait(driver, 10);
-        driver.manage().window().maximize();
-    }
+  public BasePage(WebDriver driver) {
+    this.driver = driver;
+    jsExecutor = ((JavascriptExecutor) driver);
+    wait = new WebDriverWait(driver, 10);
+    driver.manage().window().maximize();
+  }
 
-    public void loadPage() {
-        driver.get(getPageUrl());
-        assertEquals(driver.getTitle(), getPageTitle());
-    }
+  public void loadPage() {
+    driver.get(getPageUrl());
+    assertEquals(driver.getTitle(), getPageTitle());
+  }
 
-    public void clickElement(WebElement element) {
-        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
-    }
+  public void clickElement(WebElement element) {
+    wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+  }
 
-    public void waitForElementDisappear(WebElement element){
-        wait.until(ExpectedConditions.invisibilityOf(element));
-    }
+  public void waitForElementDisappear(WebElement element) {
+    wait.until(ExpectedConditions.invisibilityOf(element));
+  }
 
-    public void scrollAndClickElement(WebElement element) {
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        scrollToElement(element);
-        element.click();
-    }
+  public void scrollAndClickElement(WebElement element) {
+    wait.until(ExpectedConditions.elementToBeClickable(element));
+    scrollToElement(element);
+    element.click();
+  }
 
-    public String getText(WebElement element) {
-        return webElement(element).getText();
-    }
+  public String getText(WebElement element) {
+    return webElement(element).getText();
+  }
 
-    public void setElementText(WebElement element, String text) {
-        webElement(element).clear();
-        webElement(element).sendKeys(text);
-        assertEquals(element.getAttribute("value"), text);
-    }
+  public void setElementText(WebElement element, String text) {
+    webElement(element).clear();
+    webElement(element).sendKeys(text);
+    assertEquals(element.getAttribute("value"), text);
+  }
 
-    public void searchElementText(WebElement element, String text) {
-        webElement(element).clear();
-        webElement(element).sendKeys(text, Keys.ENTER);
-    }
+  public void searchElementText(WebElement element, String text) {
+    webElement(element).clear();
+    webElement(element).sendKeys(text, Keys.ENTER);
+  }
 
-    public WebElement webElement(WebElement element) {
-        return wait.until(ExpectedConditions.visibilityOf(element));
-    }
+  public WebElement webElement(WebElement element) {
+    return wait.until(ExpectedConditions.visibilityOf(element));
+  }
 
-    public List<WebElement> webElements(List<WebElement> elements) {
-        return wait.until(ExpectedConditions.visibilityOfAllElements(elements));
-    }
+  public List<WebElement> webElements(List<WebElement> elements) {
+    return wait.until(ExpectedConditions.visibilityOfAllElements(elements));
+  }
 
-    public void selectDropdown(WebElement element, String value) {
-        Select select = new Select(element);
-        select.selectByValue(value);
-    }
+  public void selectDropdown(WebElement element, String value) {
+    Select select = new Select(element);
+    select.selectByValue(value);
+  }
 
-    public void scrollToElement(WebElement element) {
-        jsExecutor.executeScript("arguments[0].scrollIntoView(false);", element);
-    }
+  public void scrollToElement(WebElement element) {
+    jsExecutor.executeScript("arguments[0].scrollIntoView(false);", element);
+  }
 
-    public String getPageUrl() {
-        return PAGE_URL;
-    }
+  public String getPageUrl() {
+    return PAGE_URL;
+  }
 
-    public String getPageTitle() {
-        return PAGE_TITLE;
-    }
+  public String getPageTitle() {
+    return PAGE_TITLE;
+  }
 }

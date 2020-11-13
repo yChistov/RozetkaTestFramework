@@ -12,23 +12,23 @@ import static org.testng.Assert.assertNotEquals;
 @Listeners(com.rozetka.utils.ListenerTest.class)
 public class RozetkaLoginTest extends BaseTest {
 
-    RozetkaLoginPage rbMainPage;
+  RozetkaLoginPage rbMainPage;
 
-    @Test(dataProviderClass = RozetkaData.class, dataProvider = "login")
-    public void loginTest(String email, String pass, String result) {
-        rbMainPage = PageFactory.initElements(getDriver(), RozetkaLoginPage.class);
-        //login
-        rbMainPage.loadPage();
-        rbMainPage.login(email, pass);
-        assertNotEquals(result, rbMainPage.getUserName());
-    }
+  @Test(dataProviderClass = RozetkaData.class, dataProvider = "login")
+  public void loginTest(String email, String pass, String result) {
+    rbMainPage = PageFactory.initElements(getDriver(), RozetkaLoginPage.class);
+    // login
+    rbMainPage.loadPage();
+    rbMainPage.login(email, pass);
+    assertNotEquals(result, rbMainPage.getUserName());
+  }
 
-    @Test
-    public void loginTestWithoutDataProvider() {
-        rbMainPage = PageFactory.initElements(getDriver(), RozetkaLoginPage.class);
-        //login
-        rbMainPage.loadPage();
-        rbMainPage.login("email@gmail.com", "trololo");
-        assertNotEquals("result", rbMainPage.getUserName());
-    }
+  @Test
+  public void loginTestWithoutDataProvider() {
+    rbMainPage = PageFactory.initElements(getDriver(), RozetkaLoginPage.class);
+    // login
+    rbMainPage.loadPage();
+    rbMainPage.login("email@gmail.com", "trololo");
+    assertNotEquals("result", rbMainPage.getUserName());
+  }
 }
