@@ -21,7 +21,7 @@ public class RozetkaLoginPage extends BasePage {
 
   public RozetkaLoginPage(WebDriver driver) {
     super(driver);
-    this.PAGE_TITLE = "ROZETKA — Вход в интернет-магазин";
+    this.PAGE_TITLE = "Интернет магазин Rozetka.com.ua.";
     this.PAGE_URL = "https://my.rozetka.com.ua/signin/";
   }
 
